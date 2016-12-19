@@ -311,7 +311,7 @@ def predict(model, samples):
 '''========= Main Routine =========='''
 
 if __name__ == "__main__":
-	usage = "usage: python lab2.py filename [extract-features generate-model]"
+	usage = "usage: python program.py filename [extract-features generate-model]"
 	noFile = "no filename given"
 	n_hypotheses = 10
 	#handle command line args 		(TODO: make this less horrible)
