@@ -1,5 +1,5 @@
-Project; language classificaiton
-written by Jesse Vogel
+project: language classificaiton
+created by Jesse Vogel
 12/08/2016
 
 Project dependencies:
@@ -9,12 +9,11 @@ Project dependencies:
 - pydub: 				https://github.com/jiaaro/pydub
 
 After installing dependencies, run:
-python lab2.py "path/to/input/filename" ["extract-features" "generate-model"]
+python program.py "path/to/input/filename" ["extract-features" "generate-model"]
 	- the optional parameters are not needed to predict the language of an input file. 
 
 Directory Structure:
-Lab2 /
-	lab2.py 			<-- source code
+	progam.py 			<-- source code
 	README.txt			
 	feature_output / 		<-- extracted feature data
 		en.txt
