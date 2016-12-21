@@ -314,32 +314,19 @@ if __name__ == "__main__":
 	usage = "usage: python lab2.py filename [extract-features generate-model]"
 	noFile = "no filename given"
 	n_hypotheses = 10
-	#handle command line args 		(TODO: make this less horrible)
+	#handle command line args
+	args = sys.argv[1:]
+	print args
 	if len(sys.argv) == 1:
 		print noFile
 		print usage
+		sys.exit()
 	if sys.argv[1] != "extract-features" or sys.argv[1] != "generate-model":
 		filename = sys.argv[1]
-	else:
-		print noFile
-		print usage
-	if len(sys.argv) == 3:
-		if sys.argv[2] == "extract-features":
-			extractFeatures()
-		if sys.argv[2] == "generate-model":
-			generateModel("./model_output/model_{0}.txt", n_hypotheses)
-		else:
-			print "unrecognizable argument: ", sys.argv[2]
-			print usage
-	if len(sys.argv) == 4:
-		if sys.argv[2] == "extract-features" or sys.argv[3] == "extract-features":
-			extractFeatures()
-		if sys.argv[3] == "generate-model" or sys.argv[2] == "generate-model":
-			generateModel("./model_output/model_{0}.txt", n_hypotheses)
-		else:
-			print usage
-	if len(sys.argv) > 4:
-		print "incorrect number of arguments"
-		print usage
+	if "extract-features" in args:
+		extractFeatures()
+	if "generate-model" in args:
+		generateModel("./model_output/model_{0}.txt", n_hypotheses)
 	model_list = ["./model_output/model_en.txt", "./model_output/model_es.txt", "./model_output/model_pl.txt"]
 	predictSample(filename, model_list, n_hypotheses)
+	 
