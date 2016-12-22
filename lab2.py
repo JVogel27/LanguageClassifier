@@ -11,16 +11,13 @@ import os
 '''=============== EXTRACT FEATURE PHASE ==============='''
 
 def extractFeatures():
-	calculateMFCC("./input/es1.wav", "./feature_output/es.txt")
-	calculateMFCC("./input/es2.wav", "./feature_output/es.txt")
-	calculateMFCC("./input/es3.wav", "./feature_output/es.txt")
-	calculateMFCC("./input/pl3.wav", "./feature_output/pl.txt")
-	calculateMFCC("./input/pl8.wav", "./feature_output/pl.txt")
-	calculateMFCC("./input/pl26.wav", "./feature_output/pl.txt")
-	calculateMFCC("./input/en19.wav", "./feature_output/en.txt")
-	calculateMFCC("./input/en23a.wav", "./feature_output/en.txt")
-	calculateMFCC("./input/en23b.wav", "./feature_output/en.txt")
-	calculateMFCC("./input/en32.wav", "./feature_output/en.txt")
+	en_data = {input_list: ["./input/en19.wav", "./input/en23a.wav", "./input/en23b.wav", "./input/en32.wav"], output: "./feature_output/en.txt"}
+	es_data = {input_list: ["./input/es1.wav", "./input/es2.wav", "./input/es3.wav"], output: "./feature_output/es.txt"}
+	pl_data = {input_list: ["./input/pl3.wav", "./input/pl8.wav", "./input/pl26.wav"], output: "./feature_output/pl.txt"}
+	data = [en_data, es_data, pl_data]
+	for d in data:
+		for i in d["input_list"]:
+			calculateMFCC(i, d["output"])
 
 def calculateMFCC(inputfile, outputfile):
 	'''
@@ -314,7 +311,6 @@ if __name__ == "__main__":
 	usage = "usage: python lab2.py filename [extract-features generate-model]"
 	noFile = "no filename given"
 	n_hypotheses = 10
-	#handle command line args
 	args = sys.argv[1:]
 	print args
 	if len(sys.argv) == 1:
