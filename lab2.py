@@ -1,3 +1,10 @@
+"""
+TODO list
+- Refactor program into multiple files
+- Remove file chunking
+- Increase runtime performance
+"""
+
 from python_speech_features import mfcc 
 from pydub.utils import make_chunks
 from pydub import AudioSegment
@@ -11,9 +18,9 @@ import os
 '''=============== EXTRACT FEATURE PHASE ==============='''
 
 def extractFeatures():
-	en_data = {input_list: ["./input/en19.wav", "./input/en23a.wav", "./input/en23b.wav", "./input/en32.wav"], output: "./feature_output/en.txt"}
-	es_data = {input_list: ["./input/es1.wav", "./input/es2.wav", "./input/es3.wav"], output: "./feature_output/es.txt"}
-	pl_data = {input_list: ["./input/pl3.wav", "./input/pl8.wav", "./input/pl26.wav"], output: "./feature_output/pl.txt"}
+	en_data = {"input_list": ["./input/en19.wav", "./input/en23a.wav", "./input/en23b.wav", "./input/en32.wav"], "output": "./feature_output/en.txt"}
+	es_data = {"input_list": ["./input/es1.wav", "./input/es2.wav", "./input/es3.wav"], "output": "./feature_output/es.txt"}
+	pl_data = {"input_list": ["./input/pl3.wav", "./input/pl8.wav", "./input/pl26.wav"], "output": "./feature_output/pl.txt"}
 	data = [en_data, es_data, pl_data]
 	for d in data:
 		for i in d["input_list"]:
@@ -98,6 +105,8 @@ class Adaboost:
 					example_weights[j] = example_weights[j] * error/(1 - error)
 			example_weights = [float(i)/sum(example_weights) for i in example_weights]
 			self.hypothesis_weights[k] = log((1 - error) / error)
+			#print "percent of input samples guessed correctly for stump #", k, ": ", 1 - (numWrong/N)
+
 		return self.hypotheses, self.hypothesis_weights
 
 def bestFeature(X, y, example_weights):
@@ -195,6 +204,7 @@ def generateModel(outputfile, n_hypotheses):
 	save the models to a textfile to be used later
 	'''
 	for lang in ["en", "es", "pl"]:
+		#print "Generate Model", lang
 		outputfile_copy = outputfile
 		(X, y) = preprocessInput(lang)
 		adaBoost = Adaboost(n_hypotheses)
@@ -310,9 +320,8 @@ def predict(model, samples):
 if __name__ == "__main__":
 	usage = "usage: python lab2.py filename [extract-features generate-model]"
 	noFile = "no filename given"
-	n_hypotheses = 10
+	n_hypotheses = 1
 	args = sys.argv[1:]
-	print args
 	if len(sys.argv) == 1:
 		print noFile
 		print usage
