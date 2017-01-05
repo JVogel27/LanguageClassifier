@@ -1,3 +1,8 @@
 .DS_store
 _*
 *.zip
+*.txt
+best_model_so_fat/
+data_feature_extraction.pyc
+pydub/
+python_speech_features/
