@@ -20,21 +20,14 @@ def calculateMFCC(inputfile, outputfile):
 	'''
 	use the python_speech_features library to comute the MFCC for each sample
 	save the sames to a txt file
-	'''
-	audio_data = AudioSegment.from_file(inputfile, "wav")
- 	chunk_length_ms = 6 * 1000	# 6 second clips
- 	chunks = make_chunks(audio_data, chunk_length_ms) #chunks not necessary anymore 
+	''' 
 	try:
 		os.remove(outputfile)
 	except OSError:
 		pass
-	tempfilename = "./feature_output/temp.wav"
  	output_file_obj = open(outputfile, "a")
- 	for chunk in chunks:
- 		chunk.export(tempfilename, format="wav") 
- 		(rate, data) = wav.read(tempfilename)    
- 		mfcc_feat = mfcc(data, rate)
- 		np.savetxt(output_file_obj, mfcc_feat)
- 		output_file_obj.write("\n")
+	(rate, data) = wav.read(inputfile)   
+	mfcc_feat = mfcc(data, rate)
+	np.savetxt(output_file_obj, mfcc_feat)
+	output_file_obj.write("\n")
  	output_file_obj.close()
- 	os.remove(tempfilename)

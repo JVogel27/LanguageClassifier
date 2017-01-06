@@ -161,8 +161,6 @@ def preprocessInput(classname):
 	for fname in files:
 		with open("./feature_output/{0}.txt".format(fname), "r") as file_object:
 			for line in file_object:
-				if line == '\n':
-					continue	#just ignore the chunking...
 				mfcc_features = [float(i) for i in line.split()]
 				X.append(mfcc_features)
 				if fname == classname:
