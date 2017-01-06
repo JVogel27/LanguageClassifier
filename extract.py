@@ -1,6 +1,4 @@
 from python_speech_features import mfcc 
-from pydub.utils import make_chunks
-from pydub import AudioSegment
 import scipy.io.wavfile as wav
 import numpy as np
 import os
@@ -19,7 +17,7 @@ def extractFeatures():
 def calculateMFCC(inputfile, outputfile):
 	'''
 	use the python_speech_features library to comute the MFCC for each sample
-	save the sames to a txt file
+	save the samples to a txt file
 	''' 
 	try:
 		os.remove(outputfile)
