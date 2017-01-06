@@ -2,7 +2,7 @@
 _*
 *.zip
 *.txt
-best_model_so_fat/
-data_feature_extraction.pyc
+*.pyc
+misc/*
 pydub/
 python_speech_features/

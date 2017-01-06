@@ -2,7 +2,6 @@ from math import log
 import numpy as np
 import os
 
-
 '''=============== MODEL GENERATION ==============='''
 
 class Stump:
