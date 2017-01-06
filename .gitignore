@@ -1,8 +1,9 @@
 .DS_store
 _*
 *.zip
-*.txt
 *.pyc
 misc/*
 pydub/
 python_speech_features/
+model_output/
+feature_output/
