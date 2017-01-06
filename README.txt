@@ -6,7 +6,6 @@ Project dependencies:
 - python_speech_features: 		https://github.com/jameslyons/python_speech_features
 - numpy: 				http://www.numpy.org/
 - scipy:				https://docs.scipy.org/doc/scipy-0.14.0/reference/index.html
-- pydub: 				https://github.com/jiaaro/pydub
 
 After installing dependencies, run:
 python predict.py "path/to/input/filename" [extract-features generate-model]
